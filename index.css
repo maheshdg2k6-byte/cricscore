@@ -1,0 +1,288 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Futuristic Subtle Design System */
+
+@layer base {
+  :root {
+    /* Light Theme - Clean with subtle blue undertones */
+    --background: 220 20% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    /* Primary: Deep Indigo-Blue */
+    --primary: 230 75% 55%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary: Cool Gray */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 20%;
+
+    /* Muted: Soft Gray */
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Accent: Teal-Cyan */
+    --accent: 185 60% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success: Emerald */
+    --success: 160 84% 39%;
+    --success-foreground: 0 0% 100%;
+
+    /* Live: Coral Red */
+    --live: 4 90% 58%;
+    --live-foreground: 0 0% 100%;
+
+    /* Scoring - Refined palette */
+    --score-run: 230 75% 55%;
+    --score-boundary: 43 96% 56%;
+    --score-six: 280 65% 60%;
+    --score-wicket: 4 90% 58%;
+    --score-extra: 220 14% 50%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 230 75% 55%;
+
+    --radius: 0.75rem;
+
+    /* Mobile safe areas */
+    --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 230 75% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 185 60% 45%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 230 75% 55%;
+  }
+
+  .dark {
+    /* Dark Theme - Deep space with subtle glow */
+    --background: 224 32% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 224 28% 12%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 224 28% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary: Electric Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 222 47% 8%;
+
+    /* Secondary: Slate */
+    --secondary: 217 32% 17%;
+    --secondary-foreground: 210 40% 90%;
+
+    /* Muted: Deep Slate */
+    --muted: 217 28% 15%;
+    --muted-foreground: 215 20% 55%;
+
+    /* Accent: Cyan */
+    --accent: 185 60% 50%;
+    --accent-foreground: 222 47% 8%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success */
+    --success: 160 75% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* Live */
+    --live: 4 90% 58%;
+    --live-foreground: 0 0% 100%;
+
+    /* Scoring */
+    --score-run: 217 91% 60%;
+    --score-boundary: 43 96% 56%;
+    --score-six: 280 65% 65%;
+    --score-wicket: 4 90% 58%;
+    --score-extra: 215 20% 50%;
+
+    --border: 217 28% 20%;
+    --input: 217 28% 20%;
+    --ring: 217 91% 60%;
+    
+    --sidebar-background: 224 28% 10%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 222 47% 8%;
+    --sidebar-accent: 185 60% 50%;
+    --sidebar-accent-foreground: 222 47% 8%;
+    --sidebar-border: 217 28% 20%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer components {
+  /* Score Display */
+  .score-display {
+    @apply font-bold tracking-tight;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Touch-friendly button base */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Scoring Buttons - Futuristic subtle style */
+  .score-btn {
+    @apply touch-target flex items-center justify-center rounded-xl font-semibold text-lg;
+    @apply transition-all duration-200 ease-out;
+    @apply active:scale-[0.97];
+  }
+
+  .score-btn-primary {
+    @apply score-btn bg-primary text-primary-foreground;
+    @apply hover:brightness-110;
+  }
+
+  .score-btn-run {
+    @apply score-btn bg-card border border-border text-foreground;
+    @apply hover:border-primary/40 hover:bg-primary/5;
+  }
+
+  .score-btn-boundary {
+    @apply score-btn text-white font-bold;
+    background: linear-gradient(135deg, hsl(43 96% 50%), hsl(35 95% 45%));
+  }
+
+  .score-btn-six {
+    @apply score-btn text-white font-bold;
+    background: linear-gradient(135deg, hsl(280 65% 55%), hsl(260 70% 50%));
+  }
+
+  .score-btn-wicket {
+    @apply score-btn text-white font-bold;
+    background: linear-gradient(135deg, hsl(4 90% 55%), hsl(355 85% 50%));
+  }
+
+  .score-btn-extra {
+    @apply score-btn bg-secondary text-secondary-foreground border border-border;
+    @apply hover:bg-secondary/80;
+  }
+
+  /* Match card - Subtle elevated style */
+  .match-card {
+    @apply rounded-xl bg-card border border-border/60;
+    @apply transition-all duration-200 ease-out;
+    @apply hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5;
+  }
+
+  /* Bottom navigation */
+  .bottom-nav {
+    @apply fixed bottom-0 left-0 right-0 bg-card/95 backdrop-blur-sm border-t border-border;
+    padding-bottom: var(--safe-area-inset-bottom);
+  }
+
+  /* Status badges - Refined */
+  .status-live {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-semibold text-xs;
+    background: linear-gradient(135deg, hsl(var(--live) / 0.15), hsl(var(--live) / 0.08));
+    color: hsl(var(--live));
+    border: 1px solid hsl(var(--live) / 0.2);
+  }
+
+  .status-upcoming {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-semibold text-xs;
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.12), hsl(var(--primary) / 0.06));
+    color: hsl(var(--primary));
+    border: 1px solid hsl(var(--primary) / 0.15);
+  }
+
+  .status-completed {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full font-semibold text-xs;
+    @apply bg-muted text-muted-foreground border border-border/50;
+  }
+
+  /* Futuristic subtle card */
+  .future-card {
+    @apply rounded-xl bg-card border border-border/50;
+    @apply shadow-sm;
+  }
+
+  .future-card-elevated {
+    @apply future-card;
+    @apply shadow-lg shadow-primary/5;
+  }
+
+  /* Subtle glow effect for interactive elements */
+  .glow-primary {
+    @apply transition-shadow duration-200;
+  }
+
+  .glow-primary:hover {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.15);
+  }
+
+  /* Gradient text for headings */
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  }
+
+  /* Subtle divider */
+  .divider-gradient {
+    @apply h-px w-full;
+    background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Safe area padding */
+  .pb-safe {
+    padding-bottom: max(1rem, var(--safe-area-inset-bottom));
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
